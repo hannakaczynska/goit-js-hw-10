@@ -1,5 +1,3 @@
-//co z errorami???
-
 import './css/styles.css';
 import { fetchCountries } from './fetchCountries';
 import Notiflix from 'notiflix';
@@ -26,7 +24,7 @@ function searchCountry(e) {
       .catch(error => {
         cleanOutput(countryList);
         cleanOutput(countryInfo);
-        Notiflix.Notify.failure('OOPS, there is no country with that name');
+        console.log(error);
       });
   }
 }
@@ -50,7 +48,7 @@ function manageCountriesData(countries) {
 function createCountryList(countries) {
   const list = countries
     .map(country => {
-      return `<li><img width="30px" src="${country.flags.svg}"/><p>${country.name.common}</p></li>`;
+      return `<li class="country-list-element"><img width="30px" height="20px" src="${country.flags.svg}"/><p>${country.name.official}</p></li>`;
     })
     .join('');
   countryList.innerHTML = list;
@@ -58,15 +56,16 @@ function createCountryList(countries) {
 
 function createCountryDescription(countries) {
   const description = countries.map(country => {
-    return `<div><img width="50px" src="${country.flags.svg}"/><h2>${
-      country.name.common
-    }</h2></div>
-        <ul>
-        <li><h3>Capital:</h3>${country.capital}</li>
-        <li><h3>Population:</h3>${country.population}</li>
-        <li><h3>Languages:</h3>${Object.values(country.languages).join(
-          ', '
-        )}</li>
+    return `<div class="description"><img width="50px" height="40px" src="${
+      country.flags.svg
+    }"/><h2>${country.name.official}</h2></div>
+        <ul class="description-list">
+        <li class="description-list-element"><h3>Capital: </h3> 
+        ${country.capital}</li>
+        <li class="description-list-element"><h3>Population: </h3> 
+        ${country.population}</li>
+        <li class="description-list-element"><h3>Languages: </h3>
+        ${Object.values(country.languages).join(', ')}</li>
         </ul>`;
   });
   countryInfo.innerHTML = description;
@@ -81,6 +80,7 @@ function cleanOutput(output) {
 searchBox.style.borderColor = 'blue';
 searchBox.style.borderRadius = '4px';
 searchBox.style.borderWidth = '1.5px';
+searchBox.style.outline = 'none';
 
 //list
 countryList.style.listStyleType = 'none';

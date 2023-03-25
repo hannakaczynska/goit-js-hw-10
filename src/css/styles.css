@@ -10,6 +10,7 @@ body {
   background-color: #fafafa;
   color: #212121;
   line-height: 1.5;
+  background: radial-gradient(#94adc1 1px, transparent 1px) 0 0 / 25px 25px;
 }
 
 #search-box {
@@ -17,4 +18,27 @@ body {
   padding: 8px;
   max-width: 320px;
   margin-bottom: 16px;
+}
+
+.country-list-element {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.description {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.description-list {
+  list-style: none;
+}
+
+.description-list-element {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  gap: 10px;
 }
