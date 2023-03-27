@@ -39,13 +39,17 @@ function manageCountriesData(countries) {
   } else if (countries.length === 1) {
     cleanOutput(countryList);
     createCountryDescription(countries);
-  } else {
+  } else if (countries.length >= 2 && countries.length <= 10) {
     cleanOutput(countryInfo);
     createCountryList(countries);
+  } else {
+    cleanOutput(countryList);
+    cleanOutput(countryInfo);
   }
 }
 
 function createCountryList(countries) {
+  console.log(countries);
   const list = countries
     .map(country => {
       return `<li class="country-list-element"><img width="30px" height="20px" src="${country.flags.svg}"/><p>${country.name.official}</p></li>`;
