@@ -49,7 +49,6 @@ function manageCountriesData(countries) {
 }
 
 function createCountryList(countries) {
-  console.log(countries);
   const list = countries
     .map(country => {
       return `<li class="country-list-element"><img width="30px" height="20px" src="${country.flags.svg}"/><p>${country.name.official}</p></li>`;
